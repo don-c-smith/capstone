@@ -23,20 +23,6 @@ SELECT PT_CLIN_NUM_RO_RESET AS pt_id,
 MAIN_CDOC_CLIN_DOC_UNQ_ID AS doc_id,
 MAIN_CDOC_CLIN_DOC_DATE_ADDED AS record_date,
 MAIN_CDOC_CLIN_DOC_CON_FULL AS text,
-    CASE
-        WHEN LOWER(MAIN_CDOC_CLIN_DOC_CON_FULL) LIKE '%radiation%' THEN 'radiation'
-        WHEN LOWER(MAIN_CDOC_CLIN_DOC_CON_FULL) LIKE '%irradiation%' THEN 'irradiation'
-        WHEN LOWER(MAIN_CDOC_CLIN_DOC_CON_FULL) LIKE '%re-irradiation%' THEN 're-irradiation'
-        WHEN LOWER(MAIN_CDOC_CLIN_DOC_CON_FULL) LIKE '%radiotherapy%' THEN 'radiotherapy'
-        WHEN LOWER(MAIN_CDOC_CLIN_DOC_CON_FULL) LIKE '%brachy%' THEN 'brachy'
-        WHEN LOWER(MAIN_CDOC_CLIN_DOC_CON_FULL) LIKE '%radiosurgery%' THEN 'radiosurgery'
-        WHEN LOWER(MAIN_CDOC_CLIN_DOC_CON_FULL) LIKE '%chemoradiation%' THEN 'chemoradiation'
-        WHEN LOWER(MAIN_CDOC_CLIN_DOC_CON_FULL) LIKE '% rt %' 
-          OR LOWER(MAIN_CDOC_CLIN_DOC_CON_FULL) LIKE 'rt %'
-          OR LOWER(MAIN_CDOC_CLIN_DOC_CON_FULL) LIKE '% rt'
-          OR LOWER(MAIN_CDOC_CLIN_DOC_CON_FULL) = 'rt' THEN 'rt'
-        ELSE 'NO MATCH'
-    END AS matched_key
 FROM {query_table_id}
 WHERE 
     (LOWER(MAIN_CDOC_CLIN_DOC_CON_FULL) LIKE '%radiation%'
