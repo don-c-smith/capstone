@@ -30,9 +30,12 @@ FROM `{project_id}.{dataspace_id}.{temp_table_id}`
 WHERE DATE(record_date) >= DATE_SUB(CURRENT_DATE(), INTERVAL 3 DAY)
 """
 
+# TODO: Implement query error handling
+
 # Execute query, load results into a dataframe
 df_temp = bq_obj.query(date_filter_query).to_dataframe()
 
+# TODO: Implement error handling for query and checking results against stable internal table
 # Check document ID values against the values in the stable internal dataframe
 doc_id_filter_query = f"""
 SELECT DISTINCT doc_id
@@ -48,6 +51,7 @@ df_filtered = df_temp[~df_temp['doc_id'].isin(doc_ids['doc_id'])]
 # Print results of filters in terms of new records available for classification
 print(f'{len(df_filtered)} new records passed the filters and are ready for preprocessing.')
 
+# TODO: Implement error handling for .csv export
 # Set up csv export
 curr_date = datetime.now().strftime('%Y_%m_%d')
 filename = f'radoncol_new_docs_{curr_date}.csv'

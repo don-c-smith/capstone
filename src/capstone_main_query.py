@@ -48,5 +48,9 @@ query_job = bq_obj.query(query_string, job_config=query_config)
 # Wait for the query to complete
 query_job.result()
 
+# TODO: Implement error handling for query
+
 # Print completion/destination message
 print(f'Query successful - results loaded to table {output_table_id}.')
+
+# TODO: Create print statement with number of records fetched and sent to temporary table
