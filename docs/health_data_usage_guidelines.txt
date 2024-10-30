@@ -1,0 +1,75 @@
+Considerations of Ethics and Best Practices in Healthcare-Related Data Science
+
+Working with individuals' clinical health data demands that we, as data scientists, pay careful attention to legal requirements, ethical considerations, and data governance principles. This documentation outlines several key considerations for data scientists who are working with protected health information (PHI).
+
+First Consideration: Legal Compliance
+
+HIPAA (Health Insurance Portability and Accountability Act) is the most important U.S. law governing the protection and use of health data. Some of the key requirements to which data scientists are subject include:
+1. We must obtain proper authorization before accessing or analyzing PHI.
+2. All data access should be on a "need-to-know" basis.
+3. We must maintain detailed logs of who accesses which data and why they've done so.
+4. We must comply with laws governing appropriate security measures, including encryption, transparency, and auditability.
+5. We are required to report any potential data breaches immediately.
+6. Finally, it's incumbent upon us to understand state-specific healthcare privacy laws - which may be stricter than HIPAA.
+
+Second Consideration: Data Privacy and Security
+
+Protecting individuals' privacy with regard to their PHI requires multiple layers of security, including:
+1. De-identifying data whenever possible by removing personal identifiers within instances.
+2. Ensuring that we have taken steps to avoid a information-state such that combining datasets can open the potential for re-identification.
+3. Using secure computing environments approved for work with PHI.
+4. Encrypting data both in transit and "at rest" on local networks and systems.
+5. Implementing strong, multi-layered access controls and authentication systems.
+6. Never storing PHI on personal devices or insecure cloud services.
+7. Creating and following a data disposal plan for when analysis is complete.
+8. Using secure tools for data querying, storage, and analytics as defined by organizational policy.
+
+Third Consideration: Data Governance
+
+Recall that foundationally, strong data governance practices can protect both individuals and organizations. Good core principles of data governance include the practices of:
+1. Documenting all data sources and transformations thoroughly.
+2. Maintaining a clear data lineage with appropriate oversight and resource management.
+3. Creating and following a documented, standardized process for data access.
+4. Regularly auditing data access and usage.
+5. Establishing clear roles and responsibilities for all persons with access to PHI.
+6. Having clear, documented processes in place for handling any data quality issues.
+7. Creating and following clear, documented policies for data sharing and research publication.
+
+Fourth Consideration: Principles of Ethical Analysis
+
+Ethical considerations should guide every stage of analysis which uses PHI. Principles/best practices to consider include (but are not limited to) our obligations, as data scientists, to:
+1. Consider the potential benefits and harms to individuals and communities.
+2. Be aware of the nature, structure, and causes of historical biases in medical data and research.
+3. Consider and account for demographic representation and inclusion in datasets.
+4. Avoid analyses that could lead to discrimination wherever possible.
+5. Consider the implications of predictive models on potential future care decisions.
+6. Be transparent about our methodology and the limitations of our analysis.
+7. Validate our results across different populations wherever possible.
+8. Consider how our findings might impact vulnerable groups, especially if we intend to publish.
+
+Fifth Consideration: Best Practices for Implementation
+
+In terms of actual implementation of tools and models, there are some straightforward, practical steps for ethical operationalization of data science methodologies.
+1. We should start with a clear research question that benefits patient care.
+2. We receive proper institutional review board (IRB) approval when needed/appropriate.
+3. We use the "minimum necessary data" to answer our questions - "pulling wide" is not ethically acceptable when working with PHI.
+4. We document all of our assumptions and limitations.
+5. We validate our findings with domain experts wherever possible.
+6. We do our best to consider unintended consequences.
+7. We set out a plan for the responsible and timely communication of results.
+8. We build meaningful ethics reviews into our project/analytics workflows.
+
+Sixth Consideration: Communication and Transparency
+
+Because data science is a rarified field rife with jargon and (to most people) inscrutable mathematics, we have an obligation to maintain trust through clear communication. We do this by respecting our obligations to:
+1. Be honest about data and methodology limitations.
+2. Clearly document all analytical methods and assumptions.
+3. Make our code and processes reproducible to the best of our ability.
+4. Explain our findings in accessible language.
+5. Be as clear as possible about the uncertainty in our analytical results.
+6. Provide as much context as is possible for our findings.
+7. Make sincere efforts to consider (and "head off" in our conclusions writeups) how our results might be misinterpreted.
+
+Summary:
+
+The central principle at play here is the data scientist's obligation, when working with PHI in an analytical frame, to remember that behind every data instance is a real person who trusted our healthcare system with their private information. As data scientists, we have an ethical obligation to honor that trust while working to improve healthcare through our analytical efforts.
