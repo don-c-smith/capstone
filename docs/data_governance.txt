@@ -1,0 +1,22 @@
+Data governance policy at Mayo as it relates to our work contains these relevant rules:
+
+1. All repeated, scheduled queries must be approved, set up, and monitored by the appropriate Mayo IT team.
+2. The computational cost of scheduled queries must be shown to have been responsibly minimized - i.e. the query is expected to be as "narrow" is as possible given the requirements of the task.
+3. No clinical documents in the main Mayo queryspace may be modified in any way.
+4. All table-level joins must be created in collaboration with the appropriate Mayo IT team.
+5. No created views are allowed.
+6. Use of wildcard SQL syntax is to be minimized.
+7. All query results must be saved to a temporary table and moved to a local network from said table. Any results of requests sent to the main queryspace are read-only.
+8. All temporary tables will follow a consistent naming convention. They must be set up and monitored by the appropriate Mayo IT team.
+9. Any locally-saved results of queries sent to temporary tables must be saved in an auditable file format and may only be saved on the Mayo network. Machine-local saves are not permitted.
+10. Temporary tables will be deleted as soon as their content is stored on the Mayo network.
+11. Modifications to scheduled queries must be approved and made by the appropriate Mayo IT team.
+12. Any locally-saved data files must follow the Mayo versioning rules: the original results must be left intact, locked, and stored. Any modifications to the data (including processing, modeling, etc.) must be tracked through the OneDrive versioning system. All final files must be marked as such.
+13. Any locally-saved datafile containing PHI must be destroyed as soon as it is no longer actively needed.
+14. All locally-saved datafiles must be appropriately flagged with their level of sensitivity.
+15. Any models created by DSAA must be saved through JobLib (or similar) on the Mayo network and accessed from the network location. No machine-local models/vectorizers/etc. are permitted.
+16. The 'chain of custody' of all datafiles relevant to a given project must be clearly defined and signed off on by Mayo IT. 
+17. Any person with access to these data must be approved on an individual level, *not* at the department or project level.
+18. All datafiles are the sole property of and subject to the regulations of Mayo Clinic.
+19. All programs, models, and systems generated using Mayo resources and/or Mayo data are the sole property of and subject to the regulations of Mayo Clinic.
+20. All procedures, processes, uses, and operationalizations of any analytical tools or information by DSAA are subject to appropriate Mayo Clinic policies - see the internal Data Governance online training module in MyLearn for more details.
