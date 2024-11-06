@@ -20,7 +20,45 @@ Our classifier was trained using simulated LLM-generated records which exactly m
 Initial outcomes for classifier performance on simulated data are extremely encouraging. The classifier, despite being lightweight and using minimal cross-validation, performed a near-perfect classification of unseen test-set data, with accuracy of 99% and similar performance on other classifying metrics. (See the confusion matrix in the 'figures' folder.) Therefore, the "lightweight" model performs extremely well - better than the current performance of human reviewers - despite its computational simplicity and the relatively uncomplex vectorization process.
 
 **NOTES ON PRODUCTION SCRIPTS:**
-Lorem ipsum
+The production-level scripts in the 'src' folder represent the four core steps of the classifier pipeline:
+1. Fetch Records (capstone_main-query.py)
+   - Queries the main clinical record QuerySpace for new clinical documents containing RT-relevant keywords
+   - Ensures that these are newly-added records, not revisions of old records
+   - Sends the retrieved records to a temporary table in accordance with data governance policy
+
+2. Filter Records (capstone_filter_records.py):
+   - Queries new clinical documents from the temporary BigQuery table
+   - Filters out documents older than one week
+   - Filters out documents already present in internal RadOnc database
+   - Exports filtered records to .csv
+
+3. Clean Data (capstone_clean_data.py):
+   - Processes the filtered CSV file
+   - Applies text preprocessing including:
+     * Sentence tokenization
+     * Keyword filtering
+     * Clinical spell checking
+     * Abbreviation expansion
+     * Text normalization
+   - Exports cleaned data to new .csv
+
+4. Classify Records (capstone_classify_records.py):
+   - Loads trained classifier and vectorizer from Joblib files
+   - Processes cleaned text data
+   - Makes predictions on new documents re: patient prior radiation
+   - Exports results to final .csv for human review
+
+*NOTE:*
+- The 'capstone_build_classifier' script shows the build-and-train process used to create the vectorizer and classifier objects used as the 'heart' of the ML pipeline. 
+- This script also saves the created vectorizer and predictive model as Joblib files.
+- The 'execute_classifier_pipeline' script runs the 'filter', 'clean', and 'classify' scripts in sequence.
+- The main_query script is run every day at a time specified by Mayo IT. The other three production scripts are called by the 'execute_classifier_pipeline' control script.
+- All scripts contain extensive error-handling and logging implementations to assist in transparency and debugging efforts.
 
 **DEPENDENCIES AND TOOL USAGE:**
-Lorem ipsum
+- Most scripts in the pipeline run using common data science tools and libraries.
+- Required libraries are listed in the requirements.txt file.
+- NOTE: The capstone_clean_data script relies on proprietary data analysis tools which are only available when connected to the internal Mayo Clinic network.
+- For IP-related legal reasons, I can neither discuss in detail nor produce code for those tools on a public repository.
+- The data-cleaning steps relevant to those proprietary tools can simply be 'commented out' and the scripts will remain operable.
+- As such, by downloading the simulated data, training the classifier, saving the vectorizer and classifier, modifying the filepaths, and running the control script, anyone may simulate a single run of this pipeline by providing additional "unseen" simulated clinical data. 
