@@ -14,7 +14,7 @@ from datetime import datetime
 # We persist with "%-type" formatting to preserve backward compatibility
 logging.basicConfig(
     level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s',
-    handlers=[logging.FileHandler('main_document_query.log'), logging.StreamHandler(sys.stdout)]
+    handlers=[logging.FileHandler('main_query_log.log'), logging.StreamHandler(sys.stdout)]
 )
 
 # Supply query credentials - these are 'spoofed' to avoid revealing actual Mayo Clinic projects/naming paradigms

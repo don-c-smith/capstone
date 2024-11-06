@@ -10,7 +10,7 @@ import sys
 # We persist with "%-type" formatting to preserve backward compatibility
 logging.basicConfig(
     level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s',
-    handlers=[logging.FileHandler('main_document_query.log'), logging.StreamHandler(sys.stdout)]
+    handlers=[logging.FileHandler('record_classification_log.log'), logging.StreamHandler(sys.stdout)]
 )
 
 # Define paths

@@ -13,7 +13,7 @@ from MayoTools import clin_spell, expand_abv
 # We persist with "%-type" formatting to preserve backward compatibility
 logging.basicConfig(
     level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s',
-    handlers=[logging.FileHandler('main_document_query.log'), logging.StreamHandler(sys.stdout)]
+    handlers=[logging.FileHandler('data_cleaning_log.log'), logging.StreamHandler(sys.stdout)]
 )
 
 # Define keyword list

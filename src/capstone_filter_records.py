@@ -15,7 +15,7 @@ import os
 # We persist with "%-type" formatting to preserve backward compatibility
 logging.basicConfig(
     level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s',
-    handlers=[logging.FileHandler('document_filtering.log'), logging.StreamHandler(sys.stdout)]
+    handlers=[logging.FileHandler('record_filtering_log.log'), logging.StreamHandler(sys.stdout)]
 )
 
 # Define global-scope information - this should almost never change
