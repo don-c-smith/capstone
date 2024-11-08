@@ -70,7 +70,7 @@ try:
     logging.info(f'Loaded {len(df)} records from {os.path.basename(newest_file)}')
 
     if len(df) == 0:  # Length of zero means there's an error with the file or a pipeline failure
-        logging.warning('WARNING: The input file contains no records. Check upstream processes.')
+        logging.warning('The input file contains no records. Check upstream processes.')
 
 # Note that these exception clauses are Pandas-specific
 except pd.errors.EmptyDataError:
@@ -127,7 +127,7 @@ def parse_text(text: str, keywords: list) -> str:
 
     except Exception as exc:
         # Log error but don't halt processing - return original text
-        logging.error(f'WARNING: Error in NLP processing of text: {str(exc)}')
+        logging.error(f'Error in NLP processing of text: {str(exc)}')
         print('ERROR PARSING TEXT. Returning original unprocessed string for review.')
         return text
 
@@ -157,5 +157,5 @@ except OSError as exc:
     sys.exit(1)  # Terminate program and signal failure to the coordinating script
 
 except Exception as exc:
-    logging.error(f'An unexpected error during data processing or export: {str(exc)}')
+    logging.error(f'An unexpected error occurred during data processing or export: {str(exc)}')
     sys.exit(1)  # Terminate program and signal failure to the coordinating script
