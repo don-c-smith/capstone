@@ -104,7 +104,7 @@ except TimeoutError:
     logging.error('Query execution timed out after 3 minutes. Consult IT.')
     sys.exit(1)  # Terminate program and signal failure to the coordinating script
 
-except Exception as e:
+except Exception as exc:
     # Finally, catch all other errors
-    logging.error(f'Unexpected error: {str(e)}')
+    logging.error(f'Unexpected error: {str(exc)}')
     sys.exit(1)  # Terminate program and signal failure to the coordinating script
